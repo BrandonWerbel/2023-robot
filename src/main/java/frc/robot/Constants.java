@@ -145,4 +145,24 @@ public final class Constants {
         }
 
     }
+
+    public enum LedColor {
+        BALANCING(0.57), //PINK
+        BALANCED(0.77), //GREEN
+        CLAW_OPEN(0.67), //GOLD
+        CLAW_CLOSED(0.93), //WHITE 
+        BLUE_ALLIANCE(0.87), //BLUE
+        RED_ALLIANCE(0.61); //RED
+
+        private double color;
+
+        LedColor(double color) {
+            this.color = color;
+        }
+        
+        public double color() {
+            return color;
+        }
+
+    }
 }
