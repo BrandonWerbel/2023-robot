@@ -56,6 +56,7 @@ import frc.robot.common.TrajectoryLoader;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.GrabberSubsystem;
+import frc.robot.subsystems.LedSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
 import frc.robot.subsystems.SwerveDriveSubsystem;
@@ -146,6 +147,8 @@ public class RobotContainer {
     private TalonFX elevatorMotor = new TalonFX(ElevatorConstants.ELEVATOR_MOTOR_ID);
     private ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem(elevatorMotor);
 
+    private LedSubsystem ledSubsystem = new LedSubsystem(grabberSubsystem);
+
     // LOAD TRAJECTORIES
     private final TrajectoryLoader trajectoryLoader = new TrajectoryLoader();
     private final HashMap<String, Trajectory> trajectories = trajectoryLoader.loadTrajectories();
@@ -192,6 +195,7 @@ public class RobotContainer {
       configureButtonBindings();
       configureObjects();
       buildAutoEventMap();
+      ledSubsystem.setAllianceColor();
     }
 
     public void configureObjects() {
