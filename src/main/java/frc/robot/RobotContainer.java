@@ -157,8 +157,6 @@ public class RobotContainer {
     private CANSparkMax elevatorMotor = new CANSparkMax(ElevatorConstants.ELEVATOR_MOTOR_ID, MotorType.kBrushless);
     private ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem(elevatorMotor);
 
-    private LedSubsystem ledSubsystem = new LedSubsystem(grabberSubsystem);
-
     // LOAD TRAJECTORIES
     // private final TrajectoryLoader trajectoryLoader = new TrajectoryLoader();
     // private final HashMap<String, Trajectory> trajectories = trajectoryLoader.loadTrajectories();
