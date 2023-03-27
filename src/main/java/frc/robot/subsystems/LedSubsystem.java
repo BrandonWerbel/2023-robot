@@ -20,7 +20,7 @@ public class LedSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-    blinkin.set(Color.color());
+        blinkin.set(Color.color());
     }
 
     public void setAllianceColor() {
