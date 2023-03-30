@@ -211,7 +211,6 @@ public class RobotContainer {
       configureButtonBindings();
       configureObjects();
       buildAutoEventMap();
-      ledSubsystem.setAllianceColor();
     }
 
     public void configureObjects() {
