@@ -11,39 +11,40 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.LedColor;
 
 public class LedSubsystem extends SubsystemBase {
-    /** Creates a new ExampleSubsystem. */
 
-    public LedColor Color;
+    public LedColor color;
     private Spark blinkin;
 
-    public LedSubsystem() {}
+    public LedSubsystem() {
+        setAllianceColor();
+    }
 
     @Override
     public void periodic() {
-        blinkin.set(Color.color());
+        blinkin.set(color.color());
     }
 
     public void setAllianceColor() {
     if (DriverStation.getAlliance() == Alliance.Blue)
-        Color = LedColor.BLUE_ALLIANCE;
+        color = LedColor.BLUE_ALLIANCE;
     else 
-        Color = LedColor.RED_ALLIANCE;
+        color = LedColor.RED_ALLIANCE;
     }
 
     public void setBalancingColor() {
-        Color = LedColor.BALANCING;
+        color = LedColor.BALANCING;
     }
 
-    public void setBalancedColor() {
-        Color = LedColor.BALANCED;
+    public void setDockedColor() {
+        color = LedColor.DOCKED;
     }
 
-    public void setClawOpen() {
-        Color = LedColor.CLAW_OPEN;
+    public void setGrabberOpen() {
+        color = LedColor.GRABBER_OPEN;
     }
 
-    public void setClawClosed() {
-        Color = LedColor.CLAW_CLOSED;
+    public void setGrabberClosed() {
+        color = LedColor.GRABBER_CLOSED;
     }
 
 }

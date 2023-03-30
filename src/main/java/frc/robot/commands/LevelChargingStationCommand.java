@@ -21,7 +21,7 @@ public class LevelChargingStationCommand extends SequentialCommandGroup {
                 System.out.println("BALANCING: " + x);
                 swerveDriveSubsystem.strafe(odometry.getInclineDirection(), -x);
                 if (Math.abs(x) < 0.05)
-                    ledSubsystem.setBalancedColor();
+                    ledSubsystem.setDockedColor();
                 else
                     ledSubsystem.setBalancingColor();
             },

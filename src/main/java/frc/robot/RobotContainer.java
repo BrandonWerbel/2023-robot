@@ -167,8 +167,8 @@ public class RobotContainer {
     private final LeftUpperConeAutonomous leftUpperConeAutonomous = new LeftUpperConeAutonomous(grabberSubsystem, pivotSubsystem, telescopeSubsystem, swerveDrive, odometry, eventMap);
     private final RightUpperConeAutonomous rightUpperConeAutonomous = new RightUpperConeAutonomous(grabberSubsystem, pivotSubsystem, telescopeSubsystem, swerveDrive, odometry, eventMap);
     private final MiddleAutonomous middleAutonomous = new MiddleAutonomous(grabberSubsystem, pivotSubsystem, telescopeSubsystem, elevatorSubsystem, swerveDrive, ledSubsystem, odometry, eventMap);
-    private final MiddleAutonomousNoCone middleAutonomousNoCone = new MiddleAutonomousNoCone(grabberSubsystem, pivotSubsystem, telescopeSubsystem, elevatorSubsystem, swerveDrive, odometry, eventMap);
-    private final MiddleAutonomousMiddleCone middleAutonomousMiddleCone = new MiddleAutonomousMiddleCone(grabberSubsystem, pivotSubsystem, telescopeSubsystem, elevatorSubsystem, swerveDrive, odometry, eventMap);
+    private final MiddleAutonomousNoCone middleAutonomousNoCone = new MiddleAutonomousNoCone(grabberSubsystem, pivotSubsystem, telescopeSubsystem, elevatorSubsystem, swerveDrive, ledSubsystem, odometry, eventMap);
+    private final MiddleAutonomousMiddleCone middleAutonomousMiddleCone = new MiddleAutonomousMiddleCone(grabberSubsystem, pivotSubsystem, telescopeSubsystem, elevatorSubsystem, swerveDrive, ledSubsystem, odometry, eventMap);
 
     // SENDABLE CHOOSER
     private final SendableChooser<Command> chooser = new SendableChooser<>();

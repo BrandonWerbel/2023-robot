@@ -26,24 +26,27 @@ public class GrabberSubsystem extends SubsystemBase {
         rightSolenoid.toggle();
         System.out.println(leftSolenoid.get());
         grabberClosed = !grabberClosed;
+        
         if (grabberClosed)
-            ledSubsystem.setClawClosed();
+            ledSubsystem.setGrabberClosed();
         else
-            ledSubsystem.setClawOpen();
+            ledSubsystem.setGrabberOpen();
     }
 
     public void grab(){
         leftSolenoid.set(Value.kReverse);
         rightSolenoid.set(Value.kReverse);
+
         grabberClosed = true;
-        ledSubsystem.setClawClosed();
+        ledSubsystem.setGrabberClosed();
     }
 
     public void open() {
         leftSolenoid.set(Value.kForward);
         rightSolenoid.set(Value.kForward);
+
         grabberClosed = false;
-        ledSubsystem.setClawOpen();
+        ledSubsystem.setGrabberOpen();
     }
     
 }
