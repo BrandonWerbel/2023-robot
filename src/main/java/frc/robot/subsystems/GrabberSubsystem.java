@@ -9,7 +9,6 @@ public class GrabberSubsystem extends SubsystemBase {
     private DoubleSolenoid leftSolenoid;
     private DoubleSolenoid rightSolenoid;
     private Boolean grabberClosed = false;
-
     private LedSubsystem ledSubsystem;
 
     public GrabberSubsystem(DoubleSolenoid leftSolenoid, DoubleSolenoid rightSolenoid, LedSubsystem ledSubsystem) {
