@@ -15,7 +15,9 @@ public class LedSubsystem extends SubsystemBase {
     public LedColor color;
     private Spark blinkin;
 
-    public LedSubsystem() {
+    public LedSubsystem(Spark blinkin) {
+        this.blinkin = blinkin;
+        
         setAllianceColor();
     }
 

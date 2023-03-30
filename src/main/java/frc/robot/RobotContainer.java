@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -42,6 +43,7 @@ import frc.robot.Constants.DriverConstants;
 import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.ElevatorConstants;
 import frc.robot.Constants.GrabberConstants;
+import frc.robot.Constants.LedConstants;
 import frc.robot.commands.AlignByAprilTag;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.LevelChargingStationCommand;
@@ -130,7 +132,8 @@ public class RobotContainer {
     private LimelightSubsystem limelight = new LimelightSubsystem();
     private Odometry odometry = new Odometry(gyro, driveOdometry, positions, limelight);
 
-    private LedSubsystem ledSubsystem = new LedSubsystem();
+    private Spark blinkin = new Spark(LedConstants.BLINKIN_CHANNEL);
+    private LedSubsystem ledSubsystem = new LedSubsystem(blinkin);
     
     private SwerveDriveSubsystem swerveDrive = new SwerveDriveSubsystem(
         backRightWheel, backLeftWheel, frontRightWheel, frontLeftWheel,
@@ -195,7 +198,6 @@ public class RobotContainer {
       configureButtonBindings();
       configureObjects();
       buildAutoEventMap();
-      ledSubsystem.setAllianceColor();
     }
 
     public void configureObjects() {
