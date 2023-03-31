@@ -19,32 +19,27 @@ public class LedSubsystem extends SubsystemBase {
         this.blinkin = blinkin;
     }
 
-    @Override
-    public void periodic() {
-        blinkin.set(color.color());
-    }
-
     public void setAllianceColor() {
     if (DriverStation.getAlliance() == Alliance.Blue)
-        color = LedColor.BLUE_ALLIANCE;
+        blinkin.set(LedColor.BLUE_ALLIANCE.color());
     else 
-        color = LedColor.RED_ALLIANCE;
+        blinkin.set(LedColor.RED_ALLIANCE.color());
     }
 
     public void setBalancingColor() {
-        color = LedColor.BALANCING;
+        blinkin.set(LedColor.BALANCING.color());
     }
 
     public void setDockedColor() {
-        color = LedColor.DOCKED;
+        blinkin.set(LedColor.DOCKED.color());
     }
 
     public void setGrabberOpen() {
-        color = LedColor.GRABBER_OPEN;
+        blinkin.set(LedColor.GRABBER_OPEN.color());
     }
 
     public void setGrabberClosed() {
-        color = LedColor.GRABBER_CLOSED;
+        blinkin.set(LedColor.GRABBER_CLOSED.color());
     }
 
 }
