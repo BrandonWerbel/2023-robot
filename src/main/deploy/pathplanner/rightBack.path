@@ -24,14 +24,17 @@
     },
     {
       "anchorPoint": {
-        "x": 7.218354888098665,
+        "x": 6.0,
         "y": 0.4786906362007167
       },
       "prevControl": {
-        "x": 6.087357653881974,
-        "y": 0.5515815059407894
+        "x": 4.871180523687818,
+        "y": 0.5798559098649264
       },
-      "nextControl": null,
+      "nextControl": {
+        "x": 6.5829827156182095,
+        "y": 0.4264434813591841
+      },
       "holonomicAngle": 180.0,
       "isReversal": false,
       "velOverride": null,
@@ -39,6 +42,30 @@
       "isStopPoint": false,
       "stopEvent": {
         "names": [],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 6.96,
+        "y": 0.48
+      },
+      "prevControl": {
+        "x": 6.361942354231932,
+        "y": 0.4839095528885501
+      },
+      "nextControl": null,
+      "holonomicAngle": 0,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [
+          "pickUpBall"
+        ],
         "executionBehavior": "parallel",
         "waitBehavior": "none",
         "waitTime": 0
