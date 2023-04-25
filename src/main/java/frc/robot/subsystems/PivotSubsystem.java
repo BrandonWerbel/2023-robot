@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.TalonFXSensorCollection;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.SparkMaxAbsoluteEncoder;
 
@@ -15,20 +16,22 @@ public class PivotSubsystem extends SubsystemBase {
 
     private CANSparkMax pivotMotor;
     private SparkMaxAbsoluteEncoder pivotEncoder;
+    private TalonFXSensorCollection telescopeEncoder;
 
     private final NetworkTableInstance ntInstance = NetworkTableInstance.getDefault();
     private final NetworkTable table = ntInstance.getTable("/components/arm");
 
     private final NetworkTableEntry ntPivotPosition = table.getEntry("pivotPosition");
-    private final NetworkTableEntry ntTelescopeLength = table.getEntry("telescopeLength");
+    // private final NetworkTableEntry ntTelescopeLength = table.getEntry("telescopeLength");
 
     private PIDController pivotPidController = new PIDController(19, 3, 0);//new PIDController(18, 0, 0);
     private ArmFeedforward armFeedforward = new ArmFeedforward(0, ArmConstants.startingPivotG, 0);
 
     private double targetPos;
 
-    public PivotSubsystem(CANSparkMax pivotMotor) {
+    public PivotSubsystem(CANSparkMax pivotMotor, TalonFXSensorCollection telescopeEncoder) {
         this.pivotMotor = pivotMotor;
+        this.telescopeEncoder = telescopeEncoder;
         
         this.pivotEncoder = pivotMotor.getAbsoluteEncoder(SparkMaxAbsoluteEncoder.Type.kDutyCycle);
         this.pivotEncoder.setZeroOffset(ArmConstants.pivotOffset);
@@ -48,14 +51,13 @@ public class PivotSubsystem extends SubsystemBase {
     }
 
     public void setPivotPosition(double pos) {
-        // System.out.println(ntPivotPosition.getDouble(0));
-        pivotMotor.setVoltage(armFeedforward.calculate(pos, 0) + pivotPidController.calculate(ntPivotPosition.getDouble(0), pos));
+        pivotMotor.setVoltage(armFeedforward.calculate(pos, 0) + pivotPidController.calculate(getPivotPosition(), pos));
     }
 
     @Override
     public void periodic() {
         updatePivotPosition();
-        this.updateArmFeedForward(ArmConstants.startingPivotG + ArmConstants.pivotGPerTelescopeMeter*ntTelescopeLength.getDouble(0));
+        this.updateArmFeedForward(ArmConstants.startingPivotG + ArmConstants.pivotGPerTelescopeMeter*telescopeEncoder.getIntegratedSensorPosition() * ArmConstants.telescopeRotationToMeters);
     }
 
     public void updatePivotPosition() {
@@ -63,7 +65,7 @@ public class PivotSubsystem extends SubsystemBase {
     }
 
     public double getPivotPosition() {
-        return ntPivotPosition.getDouble(0);
+        return pivotEncoder.getPosition();
     }
 
     public void updateArmFeedForward(double newG) {

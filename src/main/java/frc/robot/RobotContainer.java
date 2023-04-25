@@ -147,7 +147,7 @@ public class RobotContainer {
 
     private CANSparkMax pivotMotor = new CANSparkMax(ArmConstants.PIVOT_MOTOR_ID, MotorType.kBrushless);
     private TalonFX telescopeMotor = new TalonFX(ArmConstants.TELESCOPE_MOTOR_ID);
-    private PivotSubsystem pivotSubsystem = new PivotSubsystem(pivotMotor);
+    private PivotSubsystem pivotSubsystem = new PivotSubsystem(pivotMotor, telescopeMotor.getSensorCollection());
     private TelescopeSubsystem telescopeSubsystem = new TelescopeSubsystem(telescopeMotor, pivotSubsystem);
 
     private DoubleSolenoid leftSolenoid = new DoubleSolenoid(GrabberConstants.PNEUMATICS_HUB_ID, PneumaticsModuleType.REVPH, GrabberConstants.LEFT_SOLENOID_FORWARD, GrabberConstants.LEFT_SOLENOID_REVERSE);
@@ -320,7 +320,7 @@ public class RobotContainer {
       pivotUpButton.onFalse(new InstantCommand(() -> pivotSubsystem.setPivotPosition(pivotSubsystem.getPivotPosition()), pivotSubsystem));
 
       pivotDownButton.whileTrue(new RunCommand(() -> {
-        pivotSubsystem.setPivotMotorVoltage(-0.1);
+        pivotSubsystem.setPivotMotorVoltage(-0.2);
         updatePivotTarget();
       }, pivotSubsystem));
       // pivotDownButton.onFalse(new InstantCommand(() -> pivotSubsystem.setPivotPosition(pivotSubsystem.getPivotPosition()), pivotSubsystem));

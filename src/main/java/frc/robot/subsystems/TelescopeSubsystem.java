@@ -54,7 +54,7 @@ public class TelescopeSubsystem extends SubsystemBase {
     }
 
     public double getTelescopePosition() {
-        return ntTelescopeLength.getDouble(0);
+        return ArmConstants.telescopeRotationToMeters * telescopeMotor.getSensorCollection().getIntegratedSensorPosition();
     }
 
     public void resetTelescopeEncoder() {
